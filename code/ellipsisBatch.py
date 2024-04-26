@@ -10,9 +10,11 @@ from pathlib import Path
 from utils.parsers import ARGS, EXAMPLE_FILES
 
 GPT_MODEL = "gpt-35-turbo"
+API_KEY = 'df68c2ffc4a942c5a3e53abc375e2bbb'
+LANG = 'CH'
 
 # SET OPENAI API KEY
-client = AzureOpenAI(api_key="df68c2ffc4a942c5a3e53abc375e2bbb",
+client = AzureOpenAI(api_key=API_KEY,
                      azure_endpoint="https://hkust.azure-api.net",
                      api_version="2023-12-01-preview")
 
@@ -24,9 +26,8 @@ def completePrompt(p, model, instruction):
             {"role": "system", "content": instruction},
             {"role": "user", "content": p + "\n\n"}],
         temperature=0.7,
-        max_tokens=150
+        max_tokens=1
     )
-    print(response)
     return response.choices[0].message.content
 
 
@@ -34,8 +35,16 @@ def doQuery(p, model, instruction, ans):
     sysout = completePrompt(p, model, instruction)
     sysout = sysout.strip()
     print(p, "System:", sysout)
-    sysout = sysout[:len(ans)]
-    return(sysout == ans)
+    if(LANG == 'EN'):
+        sysout = sysout[:len(ans)]
+        res = (sysout == ans)
+    else:
+        if(ans == "是"):
+            ans_flag = "Yes"
+        else:
+            ans_flag = "No"
+        res = (sysout == ans_flag)
+    return(res)
 
 # results File: runID - # dd/mm/YY H:M:S
 dt_string = datetime.now().strftime("%d%m%Y_%H%M%S")
@@ -61,14 +70,14 @@ for iteration in range(ARGS.iterations):
         
         examples = random.sample(examples, ARGS.sampleSize)
 
-        instructions = "Please give a Yes or No answer:\n\n"
+        instructions = "Please only give a Yes or No answer in English:\n\n"
 
         cntVPE = cntNOVPE = cntVPECorrect = cntNOVPECorrect = 0
 
         # RUN THROUGH EXAMPLE
         for j, e in enumerate(examples):
             print(f"Iter {iteration} | DATASET {i} | EX {j}", "="*30)
-            prompt = "C: " +  e['V1a'] +  "\n" + "Q: " + e['Q'] + "\n\n"
+            prompt = "C: " +  e['V1a'] +  "\n" + "Q: " + e['Q'] + "\n"
             answer = e['A']
             res = doQuery(prompt, GPT_MODEL, instructions, answer)
             cntVPE += 1
@@ -78,9 +87,9 @@ for iteration in range(ARGS.iterations):
             else:
                 VPECorrect = False
 
-            print(f"Yes Ellipsis: Res {res} | Correct is {answer}")
+            print(f"Yes Ellipsis: Res {res} | Correct is {answer}\n")
         
-            prompt = "C: " +  e['V1b'] +  "\n" + "Q: " + e['Q'] + "\n\n" 
+            prompt = "C: " +  e['V1b'] +  "\n" + "Q: " + e['Q'] + "\n" 
             answer = e['A']
             res = doQuery(prompt, GPT_MODEL, instructions, answer)
 
@@ -91,7 +100,7 @@ for iteration in range(ARGS.iterations):
             else:
                 NOVPECorrect = False
 
-            print(f"No Ellipsis: Res {res} | Correct is {answer}")        
+            print(f"No Ellipsis: Res {res} | Correct is {answer}\n")        
         
         
         print(eFile, iteration, cntVPE, cntVPECorrect, cntNOVPECorrect)
