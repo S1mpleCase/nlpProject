@@ -6,11 +6,11 @@ import pdb
 import os
 from openai import AzureOpenAI
 from pathlib import Path
-
+import time
 from utils.parsers import ARGS, EXAMPLE_FILES
 
 GPT_MODEL = "gpt-35-turbo"
-API_KEY = 'df68c2ffc4a942c5a3e53abc375e2bbb'
+API_KEY = '6922bfc8efd44c9d9eb6805c1f8ee454'
 LANG = 'CH'
 
 # SET OPENAI API KEY
@@ -91,8 +91,12 @@ for iteration in range(ARGS.iterations):
         
             prompt = "C: " +  e['V1b'] +  "\n" + "Q: " + e['Q'] + "\n" 
             answer = e['A']
-            res = doQuery(prompt, GPT_MODEL, instructions, answer)
-
+            try:
+                res = doQuery(prompt, GPT_MODEL, instructions, answer)
+            except Exception as e:
+                print(f"An error occurred: {e}")
+                time.sleep(60)
+                res = doQuery(prompt, GPT_MODEL, instructions, answer)
             cntNOVPE += 1
             if res:
                 NOVPECorrect = True
