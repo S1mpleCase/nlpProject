@@ -20,7 +20,8 @@ Code: https://github.com/DanHardtDK/ellipsisGPT3
 '''
 
 GPT_MODEL = "gpt-35-turbo"
-API_KEY = 'fill in an OpenAI API key'
+# Please fill in an OpenAI API key here
+API_KEY = 'xxxxxxxxxxxxxxxxx'
 # Language switching according to the dataset
 LANG = 'CH'
 # LANG = 'EN'
