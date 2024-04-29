@@ -1,7 +1,12 @@
-# ellipsisGPT3
-Code and data for the paper 
-<a href=https://aclanthology.org/2023.acl-short.4.pdf>Ellipsis Dependent Reasoning: A New Challenge for Large Language Models</a>, by Daniel Hardt, ACL 2023.
+# The Progress of Large Language Models in the Challenge of Ellipsis-dependent Reasoning
 
+Reference: 
+Paper: 
+Hardt, Daniel. "Ellipsis-dependent reasoning: a new challenge for large language models." The 61st Annual
+Meeting of the Association for Computational Linguistics. Association for Computational Linguistics, 2023.
+<a href=https://aclanthology.org/2023.acl-short.4.pdf>Ellipsis Dependent Reasoning: A New Challenge for Large Language Models</a>, by Daniel Hardt, ACL 2023.
+Code:
+https://github.com/DanHardtDK/ellipsisGPT3
 
 **Note**: to run the above, you need to fill in an OpenAI API key in `config.cfg`.
 
@@ -18,46 +23,12 @@ The paper reports results on the following GPT3 models:
   <li>text-babbage-001</li>
   </ul>
   
-## Run with PERL
-The following command produces results for the davinci-003 model:
-```bash
-runModelBatch.pl text-davinci-003 100 logfile.out 5
-```
-
-This specifies 100 Yes and 100 No examples, with complete output logged to logfile.out, and there are 5 iterations (with each iteration result logged under /run), for a total of 1000 examples.
-
 ## Run with Python
 The following command produces the same results as the PERL operation:
 ```bash
 python code/ellipsisBatch.py data/examples1 text-davinci-003 100 5
 ```
 Note that the python method does not output the logs (as in logfile.out)
-
-
-## Parameters
-To see the possible parameters of the Python code, run
-```bash
-poetry run python code/ellipsisBatch.py --help
-```
-Which will produce the following (or a slightly modified versions of it)
-
-```
-usage: ellipsisBatch.py [-h]
-                    exampleFileList
-                    {text-davinci-003,text-davinci-002,text-ada-001,text-curie-001,text-babbage-001}
-                    {1,10,50,100,500}
-                    {1,2,3,5,10,50}
-
-positional arguments:
-  exampleFileList                          Path to file containing list of ellipsis patterns example files
-  {text-davinci-003,...,text-babbage-001}  GPT model to test
-  {1,10,50,100,500}                        number of examples to test
-  {1,2,3,5,10,50}                          number of iterations
-
-optional arguments:
-  -h, --help            show this help message and exit
-```
-
 
 ### Results
 To obtain summary statistics, run 
@@ -84,9 +55,3 @@ TOTAL ACCURACY:  0.9
 4                 2SentYN        10.00           10.00     10
 
 ```
-
-**Note**: Using `avgBatch` requires pandas
-
-
-
-
