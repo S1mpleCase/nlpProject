@@ -1,11 +1,11 @@
 # The Progress of Large Language Models in the Challenge of Ellipsis-dependent Reasoning
 
-Reference: 
-Paper: 
+**Reference**: 
+**Paper**: 
 Hardt, Daniel. "Ellipsis-dependent reasoning: a new challenge for large language models." The 61st Annual
 Meeting of the Association for Computational Linguistics. Association for Computational Linguistics, 2023.
 <a href=https://aclanthology.org/2023.acl-short.4.pdf>Ellipsis Dependent Reasoning: A New Challenge for Large Language Models</a>, by Daniel Hardt, ACL 2023.
-Code:
+**Code**:
 https://github.com/DanHardtDK/ellipsisGPT3
 
 **Note**: to run the above, you need to fill in an OpenAI API key in `config.cfg`.
