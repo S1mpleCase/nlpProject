@@ -20,8 +20,10 @@ Code: https://github.com/DanHardtDK/ellipsisGPT3
 '''
 
 GPT_MODEL = "gpt-35-turbo"
-API_KEY = '6922bfc8efd44c9d9eb6805c1f8ee454'
+API_KEY = 'fill in an OpenAI API key'
+# Language switching according to the dataset
 LANG = 'CH'
+# LANG = 'EN'
 
 # SET OPENAI API KEY
 client = AzureOpenAI(api_key=API_KEY,
