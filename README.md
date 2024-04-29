@@ -20,6 +20,8 @@ https://github.com/DanHardtDK/ellipsisGPT3
 gpt-3.5-turbo
   
 ## Run with Python
+If you want to change the dataset, please change the file name in the file `examples3.5`.
+
 ```bash
 python code/ellipsisBatch.py data/examples3.5 gpt-35-turbo 500 1
 ```
