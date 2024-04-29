@@ -29,6 +29,7 @@ if you change from an English dataset to a Chinese dataset, please change the co
 ```bash
 python code/ellipsisBatch.py data/examples3.5 gpt-35-turbo 500 1
 ```
+The parameter `500` indicates the number of examples and the parameter `1` indicates the number of iterations.
 
 ### Results
 To obtain summary statistics, run 
