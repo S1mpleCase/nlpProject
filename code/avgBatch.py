@@ -1,6 +1,16 @@
 import pandas as pd
 from argparse import ArgumentParser
 
+'''
+Citation:
+
+Paper: Paper: Hardt, Daniel. "Ellipsis-dependent reasoning: a new challenge for large language models." 
+The 61st Annual Meeting of the Association for Computational Linguistics. Association for Computational 
+Linguistics, 2023.
+
+Code: https://github.com/DanHardtDK/ellipsisGPT3
+'''
+
 parser = ArgumentParser()
 parser.add_argument("--file", type=str, required=True)
 args = parser.parse_args()
