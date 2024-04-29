@@ -2,23 +2,23 @@ from argparse import ArgumentParser, FileType
 from configparser import ConfigParser
 from pathlib import Path
 
+'''
+Citation:
+
+Paper: Paper: Hardt, Daniel. "Ellipsis-dependent reasoning: a new challenge for large language models." 
+The 61st Annual Meeting of the Association for Computational Linguistics. Association for Computational 
+Linguistics, 2023.
+
+Code: https://github.com/DanHardtDK/ellipsisGPT3
+'''
+
 arg_parser = ArgumentParser()
 arg_parser.add_argument(
     'exampleFileList',
     help='list of files containing ellipsis patterns',
     type=FileType('r'),
 )
-# arg_parser.add_argument(
-#     'model',
-#     help='GPT model to test',
-#     choices=[
-#         "text-davinci-003",
-#         "text-davinci-002", 
-#         "text-ada-001", 
-#         "text-curie-001", 
-#         "text-babbage-001"
-#     ],
-# )
+
 arg_parser.add_argument(
     'sampleSize',
     help='number of examples to test',
@@ -46,9 +46,4 @@ data_files = Path("data").glob("*.json")
 EXAMPLE_FILES = [p for p in data_files if p.name in [f.strip("\n") for f in files]]
 if len(EXAMPLE_FILES) != len(files):
     raise ValueError('exampleFileList contains invalid/missing file(s)')
-
-
-# config_parser = ConfigParser()
-# config_parser.read('config.cfg')
-# if not config_parser.get('DEFAULT', 'API_KEY'):
-#     raise ValueError('API_KEY not set in config.cfg')
+    
