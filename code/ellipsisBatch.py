@@ -9,6 +9,16 @@ from pathlib import Path
 import time
 from utils.parsers import ARGS, EXAMPLE_FILES
 
+'''
+Citation:
+
+Paper: Paper: Hardt, Daniel. "Ellipsis-dependent reasoning: a new challenge for large language models." 
+The 61st Annual Meeting of the Association for Computational Linguistics. Association for Computational 
+Linguistics, 2023.
+
+Code: https://github.com/DanHardtDK/ellipsisGPT3
+'''
+
 GPT_MODEL = "gpt-35-turbo"
 API_KEY = '6922bfc8efd44c9d9eb6805c1f8ee454'
 LANG = 'CH'
