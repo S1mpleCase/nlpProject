@@ -22,6 +22,10 @@ gpt-3.5-turbo
 ## Run with Python
 If you want to change the dataset, please change the file name in the file `examples3.5`.
 
+For example: 
+
+if you change from an English dataset to a Chinese dataset, please change the code: `LANG = 'EN'` to `LANG = 'CH'` in `ellipsisBatch.py`.
+
 ```bash
 python code/ellipsisBatch.py data/examples3.5 gpt-35-turbo 500 1
 ```
