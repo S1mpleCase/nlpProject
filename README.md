@@ -36,3 +36,16 @@ To obtain summary statistics, run
 ```
 python code/avgBatch.py --file runs/<File_Name>
 ```
+### SFT
+For EllipsisSFT, please read [sft\LLaMA-Factory\README.md](sft\LLaMA-Factory\README.md)
+
+Using single GPU to Peft and evaluate in MMLU:
+```
+.\sft.sh
+.\eval.sh
+```
+Using Multi GPU to Peft and evaluate in MMLU:
+```
+.\sft2gpu.sh
+.\eval2gpu.sh
+```
